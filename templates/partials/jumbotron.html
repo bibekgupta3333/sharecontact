@@ -1,0 +1,60 @@
+<div
+  class="jumbotron jumbotron-fluid text-danger border-bottom border-primary"
+  style="
+    background: url('https://images.pexels.com/photos/3740740/pexels-photo-3740740.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
+      no-repeat center center/cover;
+    background-attachment: fixed;
+
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    z-index: 0;
+  "
+  height="90vh"
+>
+  <div
+    class="container d-flex flex-column justify-content-center align-items-center"
+  >
+    <p
+      style="text-shadow: 5px 5px 5px #444"
+      class="h1 text-primary font-weight-bold"
+    >
+      Find The Valuable <span class="text-light"> Contact</span> Of Any Field
+    </p>
+    <p
+      class="lead text-primary font-weight-bold"
+      style="text-shadow: 1px 1px 1px #444"
+    >
+      {% if status %} {% if request.user == status %} You can search only your
+      contact in this page {% endif %}{% else %} Only shared contact are
+      findable in this site *** {% endif %}
+    </p>
+
+    <div class="text-center">
+      <form class="form-inline my-2 my-lg-0">
+        <div class="form-group">
+          <input
+            class="form-control mr-sm-2 mb-3 py-4 px-5 border border-primary"
+            name="q"
+            type="search"
+            placeholder="Search Contacts"
+          />
+        </div>
+      </form>
+    </div>
+
+    {% if status %}
+    <br />
+    {% if request.user == status %}
+    <div class="text-center">
+      <a href="?q=share" class="btn btn-primary text-dark font-weight-bold"
+        >Shared Contacts</a
+      >
+      <a href="?q=unshare" class="btn btn-dark text-primary font-weight-bold"
+        >Unshared Contacts</a
+      >
+    </div>
+    {% endif %} <br />
+    {% endif %}
+  </div>
+</div>
