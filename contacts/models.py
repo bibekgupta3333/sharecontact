@@ -7,6 +7,8 @@ from django.urls import reverse
 from django.db.models.signals import post_save
 from taggit.managers import TaggableManager
 from django.utils.timezone import localdate
+from django.utils import timezone
+from datetime import datetime
 
 
 def image_path(obj, filename):
@@ -14,7 +16,7 @@ def image_path(obj, filename):
     unique_id = uuid.uuid4().hex
     new_file_name = unique_id+'.'+extension
     new_file_name = f"{str(obj.name)}/{new_file_name}"
-    return f"contact/{obj.created}/"+new_file_name
+    return f"contact/{datetime.now().date()}/"+new_file_name
 
 
 class ContactManager(models.Manager):
@@ -48,7 +50,7 @@ class Contact(models.Model):
     github_url = models.CharField(max_length=200, blank=True, null=True)
     bio_url = models.CharField(max_length=200, blank=True, null=True)
     views = models.IntegerField(default=0)
-    created = models.DateTimeField(default=localdate())
+    created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     search_tags = TaggableManager()
 

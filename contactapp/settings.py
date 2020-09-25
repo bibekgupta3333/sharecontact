@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'n5=2-4egaqy@rk+)t^o9bdpve+6g%c(!-02d!+86f5^#m%i)&3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', ]
 
 
 # Application definition
@@ -89,7 +89,7 @@ DATABASES = {
     #     'USER': 'admin',
     #     'PASSWORD': 'admin123456',
     #     'HOST': 'admin.cjjqrxxsegba.us-east-1.rds.amazonaws.com',
-    #     'PORT': 'admin123456',
+    #     'PORT': '3306',
     # }
 }
 
